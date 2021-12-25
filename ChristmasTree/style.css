@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #DBFFFF;
+}
+
+.tree{
+    position: relative;
+    top: -150px;
+    width: 300px;
+    height: 300px;
+    transform-style: preserve-3d;
+    transform: rotateX(-20deg) rotateY(30deg);
+    animation: animate 10s linear infinite
+}
+
+.tree::before{
+    content: '⭐';
+    position: absolute;
+    top: -120px;
+    left: calc(50% - 45px);
+    font-size: 4em;
+}
+
+@keyframes animate{
+    0%{
+        transform: rotateX(-20deg) rotateY(360deg);
+    }
+    100%{
+        transform: rotateX(-20deg) rotateY(0deg);
+    }
+}
+
+.tree div{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: translateY(calc(100px * var(--j)));
+}
+
+.tree div.top span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg,#69c069,#77dd77);
+    clip-path: polygon(50% 0%,0% 100%,100% 100%);
+    transform-origin: bottom;
+    border-bottom: 10px solid #00000020;
+    transform: rotateY(calc(90deg * var(--i))) rotateX(30deg) translateZ(173px) ;
+}
+
+.tree div.button span{
+    position: absolute;
+    top: 320px;
+    left: calc(50% - 30px);
+    width: 60px;
+    height: 100%;
+    background: linear-gradient(90deg,#bb4622,#df7214);
+    /* clip-path: polygon(50% 0%,0% 100%,100% 100%); */
+    transform-origin: bottom;
+    border-bottom: 10px solid #00000055;
+    transform: rotateY(calc(90deg * var(--i))) translateZ(30px) ;
+}
+
+.tree div.text span{
+    position: absolute;
+    top: 300px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: linear-gradient(90deg,#bb4622,#df7214); */
+    transform-origin: bottom;
+    transform: rotateY(calc(90deg * var(--i))) translateZ(173px) ;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    text-align: center;
+    font-size: 100px;
+    color: #ff000090 ;
+    text-transform: uppercase;
+    line-height: 16px;
+    -webkit-text-stroke: 1px #fff;
+    transform-style: preserve-3d;
+}
+
+.tree div.text span::before{
+    content: attr(data-text);
+    position: absolute;
+    transform-origin: bottom;
+    transform: rotateX(-90deg) translateY(-25px) translateZ(25px);
+    color: #00000010;
+    filter: blur(5px);
+    -webkit-text-stroke: 0;
+}
+
+/* .tree div.text span:nth-child(1){
+    font-size: 80px;
+} */
+
+.shadow{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    background: #00000080;
+    transform-style: preserve-3d;
+    transform: rotateX(90deg) translateZ(-470px);
+    filter: blur(100px);
+}
